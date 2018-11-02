@@ -1,0 +1,32 @@
+{
+  "name": "fluppik",
+  "version": "1.0.0",
+  "description": "super flux framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "tslint src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatyaMatya21/ya_flux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatyaMatya21/ya_flux/issues"
+  },
+  "homepage": "https://github.com/KatyaMatya21/ya_flux#readme",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "del": "^3.0.0",
+    "event-stream": "^4.0.1",
+    "gulp": "^3.9.1",
+    "gulp-sequence": "^1.0.0",
+    "tsify": "^4.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
