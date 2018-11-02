@@ -6,6 +6,8 @@ var source = require('vinyl-source-stream');
 var tsify = require("tsify");
 var es = require('event-stream');
 var buffer = require('vinyl-buffer');
+var gf = require('gulp-flatten');
+var rename = require('gulp-rename');
 
 gulp.task('ts', function () {
 
@@ -25,12 +27,12 @@ gulp.task('ts', function () {
       .bundle()
       .pipe(source(entry))
       .pipe(buffer())
+      .pipe(rename({extname: '.js'}))
+      .pipe(gf())
       .pipe(gulp.dest("./dist/"));
   });
 
-  // create a merged stream
   return es.merge.apply(null, tasks);
-
 });
 
 gulp.task('watch', function () {
@@ -38,7 +40,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('clean', function () {
-  return del(['docs/**/*']);
+  return del(['dist/**/*']);
 });
 
 gulp.task('default', gulpSequence('clean', ['ts']));
