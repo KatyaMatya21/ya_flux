@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/fluppik.svg)](https://badge.fury.io/js/fluppik)
+
 # Fluppik
 
 Фреймворк использующий Flux подход для создания архитектуры приложения.
