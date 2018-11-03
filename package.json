@@ -1,6 +1,6 @@
 {
   "name": "fluppik",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "super very flux framework",
   "main": "index.js",
   "scripts": {
