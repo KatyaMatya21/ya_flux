@@ -12,7 +12,7 @@ var rename = require('gulp-rename');
 gulp.task('ts', function () {
 
   var files = [
-    './src/script.ts'
+    './src/demo.ts'
   ];
 
   var tasks = files.map(function(entry) {
