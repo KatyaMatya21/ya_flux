@@ -2,9 +2,9 @@ import Dispatcher from "./dispatcher";
 import Store from "./store";
 
 export default class View {
+  protected element: HTMLElement;
   private dispatcher: Dispatcher;
   private store: Store;
-  private element: HTMLElement;
 
   constructor(element: HTMLElement) {
     this.element = element;

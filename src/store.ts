@@ -15,7 +15,7 @@ export default class Store {
 
   public connectDispatcher(dispatcher: Dispatcher): void {
     this.dispatcher = dispatcher;
-    this.dispatcher.register(this.processAction);
+    this.dispatcher.register(this.processAction.bind(this));
   }
 
   public connectView(view: View): void {
@@ -23,7 +23,7 @@ export default class Store {
   }
 
   public onAction(type: string, callback: (payload: any, state: any) => void): void {
-    this.actionCallbacks.type = callback;
+    this.actionCallbacks[type] = callback;
   }
 
   public getData(): any {

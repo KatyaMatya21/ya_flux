@@ -10,11 +10,29 @@ const store = new Store({
 store.connectDispatcher(dispatcher);
 
 class ToDoView extends View {
+  private clickListener: (event: Event) => void;
+
+  public updateState(): void {
+
+    let buttonAdd: HTMLElement;
+
+    if (this.clickListener) {
+      buttonAdd = this.element.querySelector('button');
+      buttonAdd.removeEventListener('click', this.clickListener);
+    }
+
+    super.updateState();
+
+    buttonAdd = this.element.querySelector('button');
+    buttonAdd.addEventListener('click', this.onBtnClick.bind(this));
+  }
+
   protected render(): string {
     const storeData = this.getStoreData();
 
-    const listHtml = storeData.items.map((item: string) => {
-      return `<li>${item}</li>`;
+    let listHtml: string = '';
+    storeData.items.map((item: string) => {
+      listHtml += `<li>${item}</li>`;
     });
 
     return `
@@ -30,12 +48,23 @@ class ToDoView extends View {
         <button type="submit">Добавить</button>
       </form>`;
   }
+
+  private onBtnClick(event: Event): void {
+    event.preventDefault();
+    const text: string = (this.element.querySelector('input[type="text"]') as HTMLInputElement).value;
+    this.dispatchAction('addItem', text);
+  }
 }
 
 const container: HTMLElement = document.querySelector('.todo');
 
-const todo = new ToDoView(container);
+const todo: ToDoView = new ToDoView(container);
 
 todo.connectDispatcher(dispatcher);
 todo.connectStore(store);
+
+store.onAction('addItem', (text, state) => {
+  state.items.push(text);
+});
+
 todo.updateState();
