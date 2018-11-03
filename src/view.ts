@@ -4,24 +4,34 @@ import Store from "./store";
 export default class View {
   private dispatcher: Dispatcher;
   private store: Store;
+  private element: HTMLElement;
 
-  public connectDispatcher(dispatcher: Dispatcher) {
+  constructor(element: HTMLElement) {
+    this.element = element;
+  }
+
+  public connectDispatcher(dispatcher: Dispatcher): void {
     this.dispatcher = dispatcher;
   }
 
-  public connectStore(store: Store) {
+  public connectStore(store: Store): void {
     this.store = store;
+    this.store.connectView(this);
   }
 
-  dispatchAction(type: string, payload: any) {
+  public updateState() {
+    this.element.innerHTML = this.render();
+  }
+
+  protected dispatchAction(type: string, payload: any): void {
     this.dispatcher.dispatch(type, payload);
   }
 
-  getStoreData() {
+  protected getStoreData(): any {
     return this.store.getData();
   }
 
-  render() {
-
+  protected render(): string {
+    return '';
   }
 }

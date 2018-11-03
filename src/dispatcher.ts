@@ -1,17 +1,17 @@
 export default class Dispatcher {
-  private callbacks: Function[];
+  private callbacks: Array<(type: string, payload: any) => void>;
 
   constructor() {
     this.callbacks = [];
   }
 
-  public dispatch(type: string, payload: any) {
+  public dispatch(type: string, payload: any): void {
     this.callbacks.forEach((callback) => {
       callback(type, payload);
     });
   }
 
-  public register(callback: Function) {
+  public register(callback: (type: string, payload: any) => void): void {
     this.callbacks.push(callback);
   }
 }
