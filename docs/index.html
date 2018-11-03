@@ -64,6 +64,7 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p><a href="https://badge.fury.io/js/fluppik"><img src="https://badge.fury.io/js/fluppik.svg" alt="npm version"></a></p>
 				<h1 id="fluppik">Fluppik</h1>
 				<p>Фреймворк использующий Flux подход для создания архитектуры приложения.</p>
 				<hr>
@@ -78,10 +79,21 @@
 				</ul>
 				<hr>
 				<h3 id="-">Принцип работы</h3>
-				<h3 id="-api-">Описание API фреймворка</h3>
-				<p>Смотри <a href="http://google.com">документацию</a> (TypeDoc)</p>
+				<p>Фреймворк позволяет организовать работу приложение и его компонент
+					по подходу Flux с одним или несколькими хранилищами состояния.
+				Цикл работы представлен в следующем виде:</p>
+				<ol>
+					<li>View компонента генерирует событие Action и отправляет его в Dispatcher.</li>
+					<li>Dispatcher перенаправляет Action в Store.</li>
+					<li>Store обрабатывает событие, изменяя своё состояние State.</li>
+					<li>Store оповещает все компоненты View об изменении состояния.</li>
+					<li>Все компоненты View получают новые данные из Store и перерисовывают себя.</li>
+				</ol>
 				<hr>
-				<h3 id="-">Простйшее приложение</h3>
+				<h3 id="-api-">Описание API фреймворка</h3>
+				<p>Смотри <a href="https://katyamatya21.github.io/ya_flux/index.html">документацию</a> (TypeDoc)</p>
+				<hr>
+				<h3 id="-">Простейшее приложение</h3>
 				<pre><code class="language-typescript">
 <span class="hljs-comment">// Подключение модулей</span>
 <span class="hljs-keyword">import</span> Dispatcher <span class="hljs-keyword">from</span> <span class="hljs-string">"./node_modules/fluppik/src/dispatcher"</span>;
@@ -141,6 +153,11 @@ yourView.updateState();
 				<hr>
 				<h3 id="-">Демо</h3>
 				<p>Демо-страничка находится в папке <code>./demo/index.html</code></p>
+				<hr>
+				<h3 id="todo">TODO</h3>
+				<ul>
+					<li>Заменить все <code>any</code> на генерики...</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
